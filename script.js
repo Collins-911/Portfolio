@@ -1,130 +1,191 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-    const loader = document.getElementById("loader");
-    setTimeout(() => {
-    loader.classList.add("hidden");
-    }, 800);
+  const loader = document.getElementById("loader");
+  if (loader) {
+    setTimeout(() => loader.classList.add("hidden"), 800);
+  }
 
-    const themeToggle = document.getElementById("themeToggle");
-    const html = document.documentElement;
-    const currentTheme = localStorage.getItem("theme") || "light";
-    
-    html.setAttribute("data-theme", currentTheme);
-    updateThemeIcon(currentTheme);
+  // Initialize EmailJS
+  (function() {
+    emailjs.init("Z6lDo9ObQinqBwv_z"); // Replace with your EmailJS public key
+  })();
 
+  const themeToggle = document.getElementById("themeToggle");
+  const html = document.documentElement;
+  
+  // Check for saved theme preference or default to light
+  const savedTheme = localStorage.getItem("theme") || "light";
+  html.setAttribute("data-theme", savedTheme);
+  themeToggle.innerHTML =
+    savedTheme === "dark"
+      ? '<i class="fas fa-sun"></i>'
+      : '<i class="fas fa-moon"></i>';
+
+  if (themeToggle) {
     themeToggle.addEventListener("click", () => {
-    const theme = html.getAttribute("data-theme");
-    const newTheme = theme === "light" ? "dark" : "light";
-    
-    html.setAttribute("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme);
-    updateThemeIcon(newTheme);
+      const currentTheme = html.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      
+      html.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+      
+      themeToggle.innerHTML =
+        newTheme === "dark"
+          ? '<i class="fas fa-sun"></i>'
+          : '<i class="fas fa-moon"></i>';
     });
+  }
 
-    function updateThemeIcon(theme) {
-    const icon = themeToggle.querySelector("i");
-    icon.className = theme === "light" ? "fas fa-moon" : "fas fa-sun";
-    }
+  const navLinks = document.querySelectorAll(".nav-link");
+  const sections = document.querySelectorAll(".section");
 
-    const menuToggle = document.getElementById("menuToggle");
-    const sidebar = document.getElementById("sidebar");
-
-    menuToggle.addEventListener("click", () => {
-    sidebar.classList.toggle("active");
-    const icon = menuToggle.querySelector("i");
-    icon.classList.toggle("fa-bars");
-    icon.classList.toggle("fa-times");
-    });
-
-    const navLinks = document.querySelectorAll(".nav-link");
-    const sections = document.querySelectorAll(".section");
-
-    navLinks.forEach(link => {
+  navLinks.forEach(link => {
     link.addEventListener("click", e => {
-        e.preventDefault();
-        const targetId = link.getAttribute("href").replace("#", "");
-        const targetSection = document.getElementById(targetId);
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute("href"));
+      if (!target) return;
 
-        if (!targetSection) return;
+      navLinks.forEach(l => l.classList.remove("active"));
+      sections.forEach(s => s.classList.remove("active"));
 
-        navLinks.forEach(l => l.classList.remove("active"));
-        sections.forEach(s => s.classList.remove("active"));
+      link.classList.add("active");
+      target.classList.add("active");
 
-        link.classList.add("active");
-        targetSection.classList.add("active");
-
-        if (window.innerWidth <= 768) {
-        sidebar.classList.remove("active");
-        const icon = menuToggle.querySelector("i");
-        icon.classList.add("fa-bars");
-        icon.classList.remove("fa-times");
-        }
-
-        window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
-    });
+  });
 
-    const scrollTopBtn = document.getElementById("scrollTop");
+  const modal = document.getElementById("modal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalTech = document.getElementById("modalTech");
+  const modalImage = document.getElementById("modalImage");
+  const modalGithub = document.getElementById("modalGithub");
+  const modalClose = document.querySelector(".modal-close");
 
-    window.addEventListener("scroll", () => {
-    scrollTopBtn.classList.toggle("visible", window.scrollY > 300);
-    });
+  document.querySelectorAll(".portfolio-item").forEach(item => {
+    item.style.cursor = "pointer";
 
-    scrollTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    const contactForm = document.getElementById("contactForm");
-    const notification = document.getElementById("notification");
-
-    contactForm.addEventListener("submit", e => {
-    e.preventDefault();
-    
-    notification.classList.add("show");
-    setTimeout(() => {
-        notification.classList.remove("show");
-    }, 3000);
-    
-    contactForm.reset();
-    });
-
-    const portfolioItems = document.querySelectorAll(".portfolio-item");
-    const modal = document.getElementById("modal");
-    const modalClose = document.querySelector(".modal-close");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalTech = document.getElementById("modalTech");
-    const modalImage = document.getElementById("modalImage");
-
-    portfolioItems.forEach(item => {
     item.addEventListener("click", () => {
-        const title = item.getAttribute("data-title");
-        const tech = item.getAttribute("data-tech");
-        const image = item.getAttribute("data-image");
+      modalTitle.textContent = item.dataset.title || "";
+      modalTech.textContent = item.dataset.tech || "";
+      modalImage.src = item.dataset.image || "";
 
-        modalTitle.textContent = title;
-        modalTech.textContent = tech;
-        modalImage.src = image;
-        
-        modal.classList.add("active");
-    });
+      if (modalGithub) {
+        modalGithub.href = item.dataset.github || "#";
+        modalGithub.style.display = item.dataset.github
+          ? "inline-block"
+          : "none";
+      }
+
+      modal.classList.add("active");
     });
 
+    item.addEventListener("dblclick", () => {
+      const repo = item.dataset.github;
+      if (repo) window.open(repo, "_blank");
+    });
+  });
+
+  if (modalClose) {
     modalClose.addEventListener("click", () => {
-    modal.classList.remove("active");
+      modal.classList.remove("active");
     });
+  }
 
+  if (modal) {
     modal.addEventListener("click", e => {
-    if (e.target === modal) {
-        modal.classList.remove("active");
-    }
+      if (e.target === modal) modal.classList.remove("active");
     });
+  }
 
-    document.querySelectorAll(".stat-card").forEach(card => {
-    card.addEventListener("click", () => {
-        card.style.transform = "scale(0.95)";
-        setTimeout(() => {
-        card.style.transform = "";
-        }, 200);
+  // Mobile menu toggle
+  const menuToggle = document.getElementById("menuToggle");
+  const sidebar = document.getElementById("sidebar");
+  
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("active");
     });
+  }
+
+  // Scroll to top button
+  const scrollTop = document.getElementById("scrollTop");
+  
+  window.addEventListener("scroll", () => {
+    if (scrollTop) {
+      if (window.pageYOffset > 300) {
+        scrollTop.classList.add("visible");
+      } else {
+        scrollTop.classList.remove("visible");
+      }
+    }
+  });
+  
+  if (scrollTop) {
+    scrollTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
+  }
+
+  // Contact form submission with EmailJS
+  const contactForm = document.getElementById("contactForm");
+  const notification = document.getElementById("notification");
+  
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      
+      // Get form values
+      const formData = new FormData(contactForm);
+      const formValues = Object.fromEntries(formData);
+      
+      // Show loading state
+      const submitBtn = contactForm.querySelector('.submit-btn');
+      const originalBtnContent = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      submitBtn.disabled = true;
+      
+      // Send email using EmailJS
+      emailjs.send("service_vm3xitm","template_a58fy07", formValues)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          
+          // Show success notification
+          if (notification) {
+            notification.classList.add("show");
+            setTimeout(() => {
+              notification.classList.remove("show");
+            }, 3000);
+          }
+          
+          // Reset form
+          contactForm.reset();
+          
+          // Reset button
+          submitBtn.innerHTML = originalBtnContent;
+          submitBtn.disabled = false;
+        }, function(error) {
+          console.log('FAILED...', error);
+          
+          // Show error notification
+          if (notification) {
+            notification.querySelector('i').className = 'fas fa-exclamation-circle';
+            notification.querySelector('h4').textContent = 'Error!';
+            notification.querySelector('p').textContent = 'Failed to send message. Please try again.';
+            notification.classList.add("show");
+            setTimeout(() => {
+              notification.classList.remove("show");
+              // Reset notification content
+              notification.querySelector('i').className = 'fas fa-check-circle';
+              notification.querySelector('h4').textContent = 'Success!';
+              notification.querySelector('p').textContent = 'Your message has been sent.';
+            }, 3000);
+          }
+          
+          // Reset button
+          submitBtn.innerHTML = originalBtnContent;
+          submitBtn.disabled = false;
+        });
+    });
+  }
 });

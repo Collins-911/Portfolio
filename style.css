@@ -13,7 +13,8 @@
     --sidebar-bg: #fff;
     --sidebar-text: #6366f1;
     --sidebar-hover: #fff;
-    --gradient: #111827;
+    --accent: #6366f1;
+    --heading-color: #111827;
 }
 
 [data-theme="dark"] {
@@ -30,7 +31,8 @@
     --sidebar-bg: #0f172a;
     --sidebar-text: #cbd5e1;
     --sidebar-hover: #1e293b;
-    --gradient: #667eea
+    --accent: #818cf8;
+    --heading-color: #f1f5f9;
 }
 
 * {
@@ -138,9 +140,8 @@ body {
     justify-content: center;
     margin-bottom: 30px;
     transition: all 0.3s ease;
-    box-shadow: 0px 0px 10px #000;
+    box-shadow: 0px 0px 10px var(--shadow);
 }
-
 
 nav ul {
     list-style: none;
@@ -155,7 +156,7 @@ nav ul li a {
     gap: 12px;
     padding: 16px 20px;
     text-decoration: none;
-    color: var(--sidebar-text);
+    color: var(--text-primary);
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
@@ -165,7 +166,6 @@ nav ul li a i {
     font-size: 18px;
     width: 20px;
 }
-
 
 nav ul li a::before {
     content: '';
@@ -244,10 +244,7 @@ nav ul li a.active::before {
 .section-inner h1 {
     font-size: 3.5rem;
     font-weight: 800;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--heading-color);
     margin-bottom: 20px;
     line-height: 1.2;
 }
@@ -286,7 +283,6 @@ nav ul li a.active::before {
 
 .btn-primary:hover {
     transform: translateY(-3px);
-  
 }
 
 .btn-secondary {
@@ -296,7 +292,6 @@ nav ul li a.active::before {
 }
 
 .btn-secondary:hover {
-   
     transform: translateY(-3px);
 }
 
@@ -309,10 +304,7 @@ nav ul li a.active::before {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 15px;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--heading-color);
 }
 
 .section-header p {
@@ -347,10 +339,7 @@ nav ul li a.active::before {
     display: block;
     font-size: 2.5rem;
     font-weight: 800;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--accent);
     margin-bottom: 10px;
 }
 
@@ -384,7 +373,7 @@ nav ul li a.active::before {
     left: 0;
     width: 100%;
     height: 4px;
-    background: var(--gradient);
+    background: var(--accent);
 }
 
 .service-card:hover {
@@ -438,7 +427,7 @@ nav ul li a.active::before {
 .portfolio-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    background: rgba(0,0,0,0.8);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -642,6 +631,17 @@ nav ul li a.active::before {
 
 .modal-close:hover {
     color: var(--text-primary);
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.9) translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
 }
 
 .notification {

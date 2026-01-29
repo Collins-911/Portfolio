@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Collins </title>
+  <title>Collins</title>
+  <link rel="shortcut icon" href="assets/favicon.png" type="png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css">
 </head>
@@ -101,26 +102,34 @@
         </header>
 
         <div class="portfolio-grid">
-          <article class="portfolio-item" data-title="Portfolio Website" data-tech="HTML • CSS • JS • Github" data-image="https://picsum.photos/seed/p1/600/400.jpg">
-            <img src="https://picsum.photos/seed/p1/400/300.jpg" alt="Portfolio Website" />
+          <article class="portfolio-item" data-title="Portfolio Website" data-tech="HTML • CSS • JS • Github" data-image="assets/demo.jpg" data-github="https://github.com/Collins-911/Portfolio.git">
+            <img src="assets/demo.jpg" alt="Portfolio Website" />
             <div class="portfolio-overlay">
               <h3>Portfolio Website</h3>
               <p>HTML • CSS • JS • Github</p>
             </div>
           </article>
 
-          <article class="portfolio-item" data-title="GameVerse" data-tech="React • JS • Github" data-image="https://picsum.photos/seed/p2/400/300.jpg">
-            <img src="https://picsum.photos/seed/p2/400/300.jpg" alt="Landing Page" />
+          <article class="portfolio-item" data-title="GameVerse" data-tech="React • JS • Github" data-image="assets/demo.jpg" data-github="https://github.com/Collins-911/GameVerse.git">
+            <img src="assets/demo.jpg" alt="Landing Page" />
             <div class="portfolio-overlay">
               <h3>GameVerse</h3>
               <p>React • JS • Github</p>
             </div>
           </article>
 
-          <article class="portfolio-item" data-title="TechBridge" data-tech="React • JS • Github" data-image="https://picsum.photos/seed/p3/400/300.jpg">
-            <img src="https://picsum.photos/seed/p3/400/300.jpg" alt="JavaScript App" />
+          <article class="portfolio-item" data-title="TechBridge" data-tech="React • JS • Github" data-image="assets/demo.jpg" data-github="https://github.com/Collins-911/TechBridge.git">
+            <img src="assets/demo.jpg" alt="JavaScript App" />
             <div class="portfolio-overlay">
               <h3>TechBridge</h3>
+              <p>React • JS • Github</p>
+            </div>
+          </article>
+
+          <article class="portfolio-item" data-title="Dashboard" data-tech="React • JS • Github" data-image="assets/demo.jpg" data-github="https://github.com/Collins-911/Dashboard.git">
+            <img src="assets/demo.jpg" alt="JavaScript App" />
+            <div class="portfolio-overlay">
+              <h3>Dashboard</h3>
               <p>React • JS • Github</p>
             </div>
           </article>
@@ -136,7 +145,7 @@
           <div class="contact-info">
             <div class="contact-item">
               <h3>Email</h3>
-              <p>collins@email.com</p>
+              <p>emelumbacollins@gmail.com</p>
             </div>
 
             <div class="contact-item">
@@ -147,11 +156,11 @@
 
           <form class="contact-form" id="contactForm">
             <div class="form-row">
-              <input type="text" placeholder="Your Name" required />
-              <input type="email" placeholder="Your Email" required />
+              <input type="text" name="from_name" placeholder="Your Name" required />
+              <input type="email" name="from_email" placeholder="Your Email" required />
             </div>
 
-            <textarea placeholder="Message" required></textarea>
+            <textarea name="message" placeholder="Message" required></textarea>
             <button type="submit" class="submit-btn">
               <i class="fas fa-paper-plane"></i> Send Message
             </button>
@@ -167,10 +176,23 @@
 
   <div id="modal" class="modal">
     <div class="modal-content">
-      <button class="modal-close" title="modal-close"><i class="fas fa-times"></i></button>
+      <button class="modal-close" title="modal-close">
+        <i class="fas fa-times"></i>
+      </button>
+
       <h2 id="modalTitle"></h2>
       <p id="modalTech" style="color: var(--primary); margin-bottom: 20px;"></p>
       <img id="modalImage" style="width: 100%; border-radius: 8px;" />
+
+      <a
+        id="modalGithub"
+        href="#"
+        target="_blank"
+        class="btn btn-primary"
+        style="margin-top: 15px; display: inline-block;"
+      >
+        <i class="fab fa-github"></i> View on GitHub
+      </a>
     </div>
   </div>
 
@@ -181,6 +203,9 @@
       <p>Your message has been sent.</p>
     </div>
   </div>
+
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
