@@ -7,6 +7,9 @@
   <link rel="shortcut icon" href="assets/favicon.png" type="png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css">
+  <!-- Preload critical resources -->
+  <link rel="preload" href="assets/him.jpg" as="image">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" as="script">
 </head>
 
 <body>
@@ -21,7 +24,7 @@
   <div class="portfolio-container">
     <aside id="sidebar" class="sidebar">
       <div class="profile-pic">
-        <img src="assets/him.jpg" alt="Profile picture of Collins Emelumba" />
+        <img src="assets/him.jpg" alt="Profile picture of Collins Emelumba" loading="lazy" />
       </div>
 
       <button id="themeToggle" class="theme-toggle" title="Toggle theme">
@@ -39,7 +42,20 @@
     </aside>
 
     <main class="content-area">
+      <div class="social-links">
+          <a href="https://github.com/Collins-911" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/collins-emelumba-85031637a" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://discord.com/users/ps38_60" target="_blank" title="Discord">
+            <i class="fab fa-discord"></i>
+          </a>
+        </div>
       <section id="home" class="section section-home active">
+        
+        
         <div class="section-inner">
           <h1>Hello, I'm Collins</h1>
           <h2>Front-End Web Developer</h2>
@@ -102,32 +118,32 @@
         </header>
 
         <div class="portfolio-grid">
-          <article class="portfolio-item" data-title="Portfolio Website" data-tech="HTML • CSS • JS • Github" data-image="assets/demo.jpg" data-github="https://github.com/Collins-911/Portfolio.git">
-            <img src="assets/demo.jpg" alt="Portfolio Website" />
+          <article class="portfolio-item" data-title="Portfolio Website" data-tech="HTML • CSS • JS • Github" data-image="assets/demo.jpg" data-github="https://github.com/Collins-911/Portfolio.git" data-live="https://collins-911.github.io/Portfolio/">
+            <img src="assets/demo.jpg" alt="Portfolio Website" loading="lazy" />
             <div class="portfolio-overlay">
               <h3>Portfolio Website</h3>
               <p>HTML • CSS • JS • Github</p>
             </div>
           </article>
 
-          <article class="portfolio-item" data-title="GameVerse" data-tech="React • JS • Github" data-image="assets/demo.jpg" data-github="https://github.com/Collins-911/GameVerse.git">
-            <img src="assets/demo.jpg" alt="Landing Page" />
+          <article class="portfolio-item" data-title="GameVerse" data-tech="React • JS • Github" data-image="assets/image.png" data-github="https://github.com/Collins-911/GameVerse.git" data-live="https://gameversegg.netlify.app/">
+            <img src="assets/image.png" alt="Landing Page" loading="lazy" />
             <div class="portfolio-overlay">
               <h3>GameVerse</h3>
               <p>React • JS • Github</p>
             </div>
           </article>
 
-          <article class="portfolio-item" data-title="TechBridge" data-tech="React • JS • Github" data-image="assets/demo.jpg" data-github="https://github.com/Collins-911/TechBridge.git">
-            <img src="assets/demo.jpg" alt="JavaScript App" />
+          <article class="portfolio-item" data-title="TechBridge" data-tech="React • JS • Github" data-image="assets/demo.jpg" data-github="https://github.com/Collins-911/TechBridge.git" data-live="https://collins-911.github.io/TechBridge/">
+            <img src="assets/demo.jpg" alt="JavaScript App" loading="lazy" />
             <div class="portfolio-overlay">
               <h3>TechBridge</h3>
               <p>React • JS • Github</p>
             </div>
           </article>
 
-          <article class="portfolio-item" data-title="Dashboard" data-tech="React • JS • Github" data-image="assets/demo.jpg" data-github="https://github.com/Collins-911/Dashboard.git">
-            <img src="assets/demo.jpg" alt="JavaScript App" />
+          <article class="portfolio-item" data-title="Dashboard" data-tech="React • JS • Github" data-image="assets/demo.jpg" data-github="https://github.com/Collins-911/Dashboard.git" data-live="https://collins-911.github.io/Dashboard/">
+            <img src="assets/demo.jpg" alt="JavaScript App" loading="lazy" />
             <div class="portfolio-overlay">
               <h3>Dashboard</h3>
               <p>React • JS • Github</p>
@@ -182,17 +198,29 @@
 
       <h2 id="modalTitle"></h2>
       <p id="modalTech" style="color: var(--primary); margin-bottom: 20px;"></p>
-      <img id="modalImage" style="width: 100%; border-radius: 8px;" />
+      <img id="modalImage" style="width: 100%; border-radius: 8px;" loading="lazy" />
 
-      <a
-        id="modalGithub"
-        href="#"
-        target="_blank"
-        class="btn btn-primary"
-        style="margin-top: 15px; display: inline-block;"
-      >
-        <i class="fab fa-github"></i> View on GitHub
-      </a>
+      <div class="modal-buttons">
+        <a
+          id="modalGithub"
+          href="#"
+          target="_blank"
+          class="btn btn-primary"
+          style="margin-top: 15px; display: inline-block;"
+        >
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+        
+        <a
+          id="modalLive"
+          href="#"
+          target="_blank
+"          class="btn btn-secondary"
+          style="margin-top: 15px; display: inline-block;"
+        >
+          <i class="fas fa-external-link-alt"></i> View Live Site
+        </a>
+      </div>
     </div>
   </div>
 

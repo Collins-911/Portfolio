@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("loader");
   if (loader) {
@@ -60,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalTech = document.getElementById("modalTech");
   const modalImage = document.getElementById("modalImage");
   const modalGithub = document.getElementById("modalGithub");
+  const modalLive = document.getElementById("modalLive");
   const modalClose = document.querySelector(".modal-close");
 
   document.querySelectorAll(".portfolio-item").forEach(item => {
@@ -73,6 +73,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (modalGithub) {
         modalGithub.href = item.dataset.github || "#";
         modalGithub.style.display = item.dataset.github
+          ? "inline-block"
+          : "none";
+      }
+      
+      if (modalLive) {
+        modalLive.href = item.dataset.live || "#";
+        modalLive.style.display = item.dataset.live
           ? "inline-block"
           : "none";
       }
