@@ -1,3 +1,5 @@
+localStorage.clear();
+
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("loader");
   if (loader) {
@@ -9,31 +11,36 @@ document.addEventListener("DOMContentLoaded", () => {
     emailjs.init("Z6lDo9ObQinqBwv_z"); // Replace with your EmailJS public key
   })();
 
-  const themeToggle = document.getElementById("themeToggle");
-  const html = document.documentElement;
-  
-  // Check for saved theme preference or default to light
-  const savedTheme = localStorage.getItem("theme") || "light";
-  html.setAttribute("data-theme", savedTheme);
-  themeToggle.innerHTML =
-    savedTheme === "dark"
-      ? '<i class="fas fa-sun"></i>'
-      : '<i class="fas fa-moon"></i>';
+const themeToggle = document.getElementById("themeToggle");
+const html = document.documentElement;
 
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-      const currentTheme = html.getAttribute("data-theme");
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
-      
-      html.setAttribute("data-theme", newTheme);
-      localStorage.setItem("theme", newTheme);
-      
-      themeToggle.innerHTML =
-        newTheme === "dark"
-          ? '<i class="fas fa-sun"></i>'
-          : '<i class="fas fa-moon"></i>';
-    });
-  }
+// Check for saved theme preference or default to "dark"
+// 1. REMOVED the space from "dark "
+// 2. Changed the default from "dark " to "dark"
+const savedTheme = localStorage.getItem("theme") || "dark"; 
+html.setAttribute("data-theme", savedTheme);
+
+// Set the initial icon based on the theme
+themeToggle.innerHTML =
+  savedTheme === "dark"
+    ? '<i class="fas fa-sun"></i>'
+    : '<i class="fas fa-moon"></i>';
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const currentTheme = html.getAttribute("data-theme");
+    // 3. Corrected the typo here as well
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    
+    html.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+    
+    themeToggle.innerHTML =
+      newTheme === "dark"
+        ? '<i class="fas fa-sun"></i>'
+        : '<i class="fas fa-moon"></i>';
+  });
+}
 
   const navLinks = document.querySelectorAll(".nav-link");
   const sections = document.querySelectorAll(".section");

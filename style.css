@@ -1,3 +1,4 @@
+/* --- CSS Variables for Theming --- */
 :root {
     --primary: #6366f1;
     --primary-dark: #4f46e5;
@@ -34,6 +35,7 @@
     --heading-color: #f1f5f9;
 }
 
+/* --- Global & Reset Styles --- */
 * {
     margin: 0;
     padding: 0;
@@ -48,11 +50,13 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* --- Layout --- */
 .portfolio-container {
     display: flex;
     min-height: 100vh;
 }
 
+/* --- Loader --- */
 .loader {
     position: fixed;
     inset: 0;
@@ -82,6 +86,7 @@ body {
     to { transform: rotate(360deg); }
 }
 
+/* --- Sidebar --- */
 .sidebar {
     width: 280px;
     background: var(--sidebar-bg);
@@ -182,10 +187,11 @@ nav ul li a.active::before {
     transform: scaleY(1);
 }
 
+/* --- Main Content Area --- */
 .menu-toggle {
     display: none;
     position: fixed;
-    top: 20px;
+    top: 25px;
     left: 20px;
     z-index: 1100;
     background: var(--primary);
@@ -196,6 +202,8 @@ nav ul li a.active::before {
     color: white;
     box-shadow: 0 4px 12px var(--shadow);
     transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
 }
 
 .menu-toggle:hover {
@@ -236,6 +244,7 @@ nav ul li a.active::before {
     }
 }
 
+/* --- Section: Home --- */
 .section-inner {
     text-align: center;
     padding: 40px 20px;
@@ -256,7 +265,6 @@ nav ul li a.active::before {
     margin-bottom: 40px;
 }
 
-/* Social Links - Top Right Position */
 .social-links {
     position: absolute;
     top: 10px;
@@ -308,6 +316,7 @@ nav ul li a.active::before {
     margin-top: 40px;
 }
 
+/* --- Buttons --- */
 .btn {
     padding: 14px 32px;
     font-weight: 600;
@@ -339,6 +348,7 @@ nav ul li a.active::before {
     transform: translateY(-3px);
 }
 
+/* --- Section Headers --- */
 .section-header {
     text-align: center;
     margin-bottom: 60px;
@@ -356,6 +366,7 @@ nav ul li a.active::before {
     color: var(--text-secondary);
 }
 
+/* --- Section: About --- */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -436,64 +447,108 @@ nav ul li a.active::before {
     line-height: 1.6;
 }
 
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+/* --- NEW PROJECTS SECTION STYLES --- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  padding: 20px 0;
 }
 
-.portfolio-item {
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px var(--shadow);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    height: 280px;
+.project-card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px var(--shadow);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
 }
 
-.portfolio-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px var(--shadow);
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px var(--shadow);
 }
 
-.portfolio-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
+.project-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
 }
 
-.portfolio-item:hover img {
-    transform: scale(1.1);
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.portfolio-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.8);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 25px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+.project-card:hover .project-image img {
+  transform: scale(1.1);
 }
 
-.portfolio-item:hover .portfolio-overlay {
-    opacity: 1;
+.project-content {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allows content to fill space */
 }
 
-.portfolio-overlay h3 {
-    color: white;
-    font-size: 1.5rem;
-    margin-bottom: 8px;
+.project-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 15px;
 }
 
-.portfolio-overlay p {
-    color: var(--text-light);
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
 }
 
+.project-tech span {
+   box-shadow: 0 2px 10px var(--shadow);
+  color: var(--primary);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.project-links {
+  display: flex;
+  gap: 15px;
+  margin-top: auto; /* Pushes links to the bottom */
+}
+
+.btn-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.btn-icon:hover {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-3px);
+}
+/* --- END OF NEW PROJECTS SECTION STYLES --- */
+
+/* --- Section: Contact --- */
 .contact-content {
     max-width: 900px;
     margin: 0 auto;
@@ -596,6 +651,7 @@ nav ul li a.active::before {
     box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
 }
 
+/* --- Scroll to Top Button --- */
 .scroll-top {
     position: fixed;
     bottom: 30px;
@@ -626,6 +682,7 @@ nav ul li a.active::before {
     transform: translateY(-5px);
 }
 
+/* --- Modal (Still kept for potential future use) --- */
 .modal {
     position: fixed;
     inset: 0;
@@ -684,17 +741,7 @@ nav ul li a.active::before {
     margin-top: 20px;
 }
 
-@keyframes popIn {
-    from {
-        transform: scale(0.9) translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-    }
-}
-
+/* --- Notification --- */
 .notification {
     position: fixed;
     top: 20px;
@@ -731,6 +778,7 @@ nav ul li a.active::before {
     font-size: 0.9rem;
 }
 
+/* --- Responsive Design --- */
 @media (max-width: 768px) {
     .social-links {
         top: 15px;
@@ -749,47 +797,47 @@ nav ul li a.active::before {
     }
 
     .menu-toggle {
-    display: block;
+        display: block;
     }
 
     .sidebar {
-    transform: translateX(-100%);
+        transform: translateX(-100%);
     }
 
     .sidebar.active {
-    transform: translateX(0);
+        transform: translateX(0);
     }
 
     .content-area {
-    margin-left: 0;
-    width: 100%;
-    padding: 80px 20px;
+        margin-left: 0;
+        width: 100%;
+        padding: 80px 20px;
     }
 
     .section-inner h1 {
-    font-size: 2.5rem;
+        font-size: 2.5rem;
     }
 
     .section-inner h2 {
-    font-size: 1.4rem;
+        font-size: 1.4rem;
     }
 
     .section-header h1 {
-    font-size: 2rem;
+        font-size: 2rem;
     }
 
     .stats-grid {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 20px;
     }
 
     .services-grid,
-    .portfolio-grid {
-    grid-template-columns: 1fr;
+    .projects-grid {
+        grid-template-columns: 1fr;
     }
 
     .contact-form {
-    padding: 30px 20px;
+        padding: 30px 20px;
     }
     
     .modal-buttons {
