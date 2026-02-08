@@ -4,7 +4,7 @@
     --primary-dark: #4f46e5;
     --bg-primary: #ffffff;
     --bg-secondary: #f9fafb;
-    --bg-card: #ffffff;
+    --bg-card: ffffff;
     --text-primary: #111827;
     --text-secondary: #6b7280;
     --text-light: #9ca3af;
@@ -132,9 +132,9 @@ body {
 }
 
 .theme-toggle {
-    background: var(--sidebar-bg);
     border: none;
-    color: var(--sidebar-text);
+    background: var(--bg-card);
+    color: var(--text-primary);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -194,12 +194,13 @@ nav ul li a.active::before {
     top: 25px;
     left: 20px;
     z-index: 1100;
-    background: var(--primary);
+    background: var(--bg-card);
+    color: var(--text-primary);
     border: none;
     padding: 12px;
     border-radius: 10px;
     cursor: pointer;
-    color: white;
+    
     box-shadow: 0 4px 12px var(--shadow);
     transition: all 0.3s ease;
     width: 40px;
@@ -207,7 +208,6 @@ nav ul li a.active::before {
 }
 
 .menu-toggle:hover {
-    background: var(--primary-dark);
     transform: translateY(-2px);
 }
 
@@ -844,3 +844,4 @@ nav ul li a.active::before {
         flex-direction: column;
     }
 }
+

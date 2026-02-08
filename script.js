@@ -1,5 +1,3 @@
-localStorage.clear();
-
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("loader");
   if (loader) {
@@ -203,3 +201,4 @@ if (themeToggle) {
     });
   }
 });
+
