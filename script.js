@@ -47,6 +47,38 @@ function showToast(msg, success) {
   setTimeout(function () { toast.classList.remove('show'); }, 3500);
 }
 
+// ── SKILL BARS (auto-updated from progress.json) ──
+async function loadSkillBars() {
+  const skillElements = document.querySelectorAll('[data-skill]');
+  if (!skillElements.length) return;
+
+  let data;
+  try {
+    const response = await fetch('progress.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`status ${response.status}`);
+    data = await response.json();
+  } catch (err) {
+    console.warn('progress.json not loaded, keeping static bar values:', err);
+    return; // bars stay at whatever hardcoded % is in the HTML
+  }
+
+  skillElements.forEach(function (el) {
+    const key = el.dataset.skill;
+    const percent = data[key];
+    if (percent === undefined) return; // e.g. "react" won't be in the JSON — leave it as-is
+
+    const fill = el.querySelector('.skill-fill');
+    const label = el.querySelector('.skill-percent');
+
+    requestAnimationFrame(function () {
+      if (fill) fill.style.width = percent + '%';
+      if (label) label.textContent = percent + '%';
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', loadSkillBars);
+
 // ── CONTACT FORM ──
 var form = document.getElementById('contactForm');
 try { emailjs.init("Z6lDo9ObQinqBwv_z"); } catch (e) { }
