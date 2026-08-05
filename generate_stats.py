@@ -14,17 +14,14 @@ import sys
 import time
 import requests
 
-# ---- CONFIG ----
 GITHUB_USERNAME = "Collins-911"
 OUTPUT_FILE = "progress.json"
 GITHUB_API_BASE = "https://api.github.com"
 
-# Map GitHub's raw language names -> the keys you use in your HTML data-skill attrs
 LANGUAGE_MAP = {
     "Jupyter Notebook": "machine-learning",
     "Python": "python",
     "JavaScript": "javascript",
-    # merge TS into JS bucket, adjust if you want them separate
     "TypeScript": "javascript",
     "HTML": "html",
     "CSS": "css",
@@ -32,15 +29,11 @@ LANGUAGE_MAP = {
     "Shell": "shell",
 }
 
-REQUEST_TIMEOUT = 10  # seconds
+REQUEST_TIMEOUT = 10
 MAX_RETRIES = 3
 
 
 def github_get(url):
-    """
-    GET a GitHub API URL with basic retry + rate-limit handling.
-    Returns parsed JSON, or None if the request ultimately fails.
-    """
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             response = requests.get(url, timeout=REQUEST_TIMEOUT)
@@ -53,11 +46,9 @@ def github_get(url):
             return response.json()
 
         if response.status_code == 403:
-            # Likely rate-limited. Check the reset header if present.
             reset_ts = response.headers.get("X-RateLimit-Reset")
             remaining = response.headers.get("X-RateLimit-Remaining")
-            print(
-                f"[ERROR] 403 from GitHub. Remaining={remaining} ResetAt={reset_ts}")
+            print(f"[ERROR] 403 from GitHub. Remaining={remaining} ResetAt={reset_ts}")
             print("You're likely hitting the unauthenticated rate limit (60/hr).")
             print("Fix: use a GitHub personal access token and send it in headers.")
             return None
@@ -74,7 +65,6 @@ def github_get(url):
 
 
 def get_all_repos(username):
-    """Fetch all public repos for a user, handling pagination."""
     repos = []
     page = 1
     while True:
@@ -82,7 +72,7 @@ def get_all_repos(username):
         data = github_get(url)
         if data is None:
             break
-        if not data:  # empty list = no more pages
+        if not data:
             break
         repos.extend(data)
         page += 1
@@ -90,14 +80,9 @@ def get_all_repos(username):
 
 
 def aggregate_languages(repos):
-    """
-    Sum byte counts per language across all repos.
-    Returns dict like {"Python": 40213, "JavaScript": 12044, ...}
-    """
     totals = {}
     for repo in repos:
         if repo.get("fork"):
-            # Skip forked repos so you don't inflate stats with others' code.
             continue
 
         languages_url = repo.get("languages_url")
@@ -106,7 +91,7 @@ def aggregate_languages(repos):
 
         lang_data = github_get(languages_url)
         if not lang_data:
-            continue  # empty repo or fetch failed — just skip it
+            continue
 
         for lang, byte_count in lang_data.items():
             totals[lang] = totals.get(lang, 0) + byte_count
@@ -115,14 +100,9 @@ def aggregate_languages(repos):
 
 
 def map_and_scale(totals, mapping):
-    """
-    Apply the override mapping and convert raw byte totals into
-    integer percentages (0-100) that sum to 100 (or 0 if no data).
-    """
     if not totals:
         return {}
 
-    # Fold raw language names into mapped keys
     mapped_totals = {}
     for lang, byte_count in totals.items():
         key = mapping.get(lang, lang.lower())
@@ -132,7 +112,6 @@ def map_and_scale(totals, mapping):
     if grand_total == 0:
         return {}
 
-    # Convert to percentages, then fix rounding so they sum to exactly 100
     raw_percentages = {
         key: (byte_count / grand_total) * 100
         for key, byte_count in mapped_totals.items()
@@ -141,8 +120,6 @@ def map_and_scale(totals, mapping):
     floored = {key: int(value) for key, value in raw_percentages.items()}
     remainder = 100 - sum(floored.values())
 
-    # Distribute leftover percentage points to the languages with the
-    # largest fractional remainder, so the total is exactly 100.
     fractions = sorted(
         raw_percentages.items(),
         key=lambda item: item[1] - int(item[1]),
