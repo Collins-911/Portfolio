@@ -20,6 +20,7 @@ function showSection(id) {
   if (sec) sec.classList.add('active');
   document.querySelectorAll('[data-section="' + id + '"]').forEach(function (l) { l.classList.add('active'); });
   document.getElementById('sidebar').classList.remove('open');
+  window.location.hash = id; // NEW: persist current section in the URL
 }
 
 document.querySelectorAll('.nav-link').forEach(function (link) {
@@ -29,6 +30,13 @@ document.querySelectorAll('.nav-link').forEach(function (link) {
     if (target) showSection(target);
   });
 });
+
+// NEW: on load, restore section from URL hash if one exists
+var validSections = ['home', 'about', 'projects', 'contact'];
+var initialSection = window.location.hash.replace('#', '');
+if (validSections.includes(initialSection)) {
+  showSection(initialSection);
+}
 
 // ── MOBILE MENU ──
 document.getElementById('menuBtn').addEventListener('click', function () {
