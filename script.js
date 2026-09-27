@@ -70,36 +70,46 @@ function showToast(msg, success) {
 
 // ── SKILL BARS (auto-updated from progress.json) ──
 async function loadSkillBars() {
-  const skillElements = document.querySelectorAll('[data-skill]');
-  if (!skillElements.length) return;
+    const skillElements = document.querySelectorAll('[data-skill]');
+    if (!skillElements.length) return;
 
-  let data;
-  try {
-    const response = await fetch('progress.json', { cache: 'no-store' });
-    if (!response.ok) throw new Error(`status ${response.status}`);
-    data = await response.json();
-  } catch (err) {
-    console.warn('progress.json not loaded, keeping static bar values:', err);
-    return; // bars stay at whatever hardcoded % is in the HTML
-  }
+    let data;
 
-  skillElements.forEach(function (el) {
-    const key = el.dataset.skill;
-    const percent = data[key];
-    if (percent === undefined) return; // e.g. "react" won't be in the JSON — leave it as-is
+    try {
+        const response = await fetch('progress.json', { cache: 'no-store' });
 
-    const fill = el.querySelector('.skill-fill');
-    const label = el.querySelector('.skill-percent');
+        if (!response.ok) {
+            throw new Error(`status ${response.status}`);
+        }
 
-    requestAnimationFrame(function () {
-      if (fill) fill.style.width = percent + '%';
-      if (label) label.textContent = percent + '%';
+        data = await response.json();
+
+    } catch (err) {
+        console.warn('progress.json not loaded:', err);
+        return;
+    }
+
+    skillElements.forEach(function (el) {
+        const key = el.dataset.skill;
+        const percent = data[key];
+
+        if (percent === undefined) return;
+
+        const fill = document.querySelector(
+            `[data-skill-bar="${key}"]`
+        );
+
+        requestAnimationFrame(function () {
+            if (fill) {
+                fill.style.width = percent + '%';
+            }
+
+            el.textContent = percent + '%';
+        });
     });
-  });
 }
 
 document.addEventListener('DOMContentLoaded', loadSkillBars);
-
 // ── CONTACT FORM ──
 var form = document.getElementById('contactForm');
 try { emailjs.init("Z6lDo9ObQinqBwv_z"); } catch (e) { }

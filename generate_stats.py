@@ -48,7 +48,8 @@ def github_get(url):
         if response.status_code == 403:
             reset_ts = response.headers.get("X-RateLimit-Reset")
             remaining = response.headers.get("X-RateLimit-Remaining")
-            print(f"[ERROR] 403 from GitHub. Remaining={remaining} ResetAt={reset_ts}")
+            print(
+                f"[ERROR] 403 from GitHub. Remaining={remaining} ResetAt={reset_ts}")
             print("You're likely hitting the unauthenticated rate limit (60/hr).")
             print("Fix: use a GitHub personal access token and send it in headers.")
             return None
