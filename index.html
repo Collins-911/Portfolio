@@ -1,259 +1,520 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Collins — Frontend developer building toward Python backend and AI engineering. View my projects and get in touch.">
-  <title>Collins — Developer</title>
-  <link rel="shortcut icon" href="/assets/icons8-dev-50 (1).png" type="png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Collins — Developer building with Python, Flask, React and JavaScript, with a focus on backend development and AI engineering.">
+    <title>Collins — Developer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+    <aside class="sidebar" id="sidebar">
 
-  <aside class="sidebar" id="sidebar">
-    <div class="avatar-wrap">
-      <img src="assets/him.jpg" alt="Collins" onerror="this.style.display='none'">
-      <span class="online-dot"></span>
+        <div class="avatar-wrap">
+            <img src="assets/him.jpg" alt="Collins">
+            <span class="online-dot"></span>
+        </div>
+
+        <div class="sidebar-name">Collins</div>
+        <div class="sidebar-role">// dev & builder</div>
+
+        <nav>
+            <a href="#home" class="nav-link active" data-section="home">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="#about" class="nav-link" data-section="about">
+                <i class="fa-solid fa-user"></i>
+                <span>About</span>
+            </a>
+
+            <a href="#projects" class="nav-link" data-section="projects">
+                <i class="fa-solid fa-code"></i>
+                <span>Projects</span>
+            </a>
+
+            <a href="#contact" class="nav-link" data-section="contact">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Contact</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="socials">
+                <a href="https://github.com/Collins-911" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/in/collins-emelumba-85031637a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+
+                <a href="https://discord.com/users/ps38_60" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+                    <i class="fa-brands fa-discord"></i>
+                </a>
+            </div>
+
+            <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+        </div>
+
+    </aside>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <main class="main">
+
+        <section id="home" class="section active">
+
+            <div class="home-eyebrow">
+                available for work
+            </div>
+
+            <h1 class="home-title">
+                Hi, I'm <span>Collins.</span>
+            </h1>
+
+            <p class="home-desc">
+                Developer currently going deep on Python, building backend
+                projects with Flask and working toward ML/AI engineering.
+                I also build clean and functional web experiences while
+                expanding my frontend and backend skills.
+            </p>
+
+            <div class="tag-row">
+                <span class="tag green">Python</span>
+                <span class="tag">Frontend Dev</span>
+                <span class="tag blue">Flask</span>
+                <span class="tag green">ML / AI</span>
+                <span class="tag blue">React</span>
+                <span class="tag">HTML / CSS / JS</span>
+            </div>
+
+            <div class="home-btns">
+                <a href="#projects" class="btn btn-solid">
+                    View Projects
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+                <a href="#contact" class="btn btn-outline">
+                    Contact Me
+                </a>
+            </div>
+
+        </section>
+
+        <section id="about" class="section">
+
+            <div class="sec-header">
+                <div class="sec-label">01 / about</div>
+                <h2 class="sec-title">About Me</h2>
+            </div>
+
+            <div class="about-grid">
+
+                <div class="about-text">
+
+                    <p>
+                        I'm a developer based in Nigeria. I started with
+                        frontend development and I'm now expanding deeper
+                        into <strong>Python and backend development.</strong>
+                    </p>
+
+                    <p>
+                        I'm currently building real-world projects with
+                        <strong>Flask</strong>, improving my programming
+                        fundamentals and learning how to build useful
+                        applications.
+                    </p>
+
+                    <p>
+                        My long-term goal is to move into
+                        <strong>Machine Learning and AI engineering.</strong>
+                    </p>
+
+                </div>
+
+                <div class="skills-list">
+
+                    <div class="skill-row">
+                        <div class="skill-name">
+                            <span>HTML / CSS</span>
+                            <span data-skill="html">0%</span>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div
+                                class="skill-fill"
+                                data-skill-bar="html"
+                                style="width: 0%">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-row">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span data-skill="javascript">0%</span>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div
+                                class="skill-fill blue"
+                                data-skill-bar="javascript"
+                                style="width: 0%">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-row">
+                        <div class="skill-name">
+                            <span>React</span>
+                            <span data-skill="react">0%</span>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div
+                                class="skill-fill"
+                                data-skill-bar="react"
+                                style="width: 0%">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-row">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span data-skill="python">0%</span>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div
+                                class="skill-fill blue"
+                                data-skill-bar="python"
+                                style="width: 0%">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-row">
+                        <div class="skill-name">
+                            <span>ML / AI</span>
+                            <span data-skill="machine-learning">0%</span>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div
+                                class="skill-fill"
+                                data-skill-bar="machine-learning"
+                                style="width: 0%">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="stats-row">
+
+                <div class="stat">
+                    <span class="stat-num">1+</span>
+                    <span class="stat-label">Yrs Exp</span>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-num">4</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Focused</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="projects" class="section">
+
+            <div class="sec-header">
+                <div class="sec-label">02 / projects</div>
+                <h2 class="sec-title">Things I've Built</h2>
+            </div>
+
+            <div class="projects-grid">
+
+                <article class="project-card">
+
+                    <div class="project-image">
+                        <img
+                            src="assets/project/Screenshot_27-9-2026_184535_192.168.0.3.jpeg"
+                            alt="Portfolio website screenshot"
+                            loading="lazy">
+                    </div>
+
+                    <div class="project-top">
+                        <h3>Portfolio Website</h3>
+
+                        <div class="project-links">
+                            <a
+                                href="https://github.com/Collins-911/Portfolio.git"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Portfolio GitHub">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+
+                            <a
+                                href="https://portfoliocollins.netlify.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Portfolio live site">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <p class="project-desc">
+                        A responsive developer portfolio showcasing my
+                        projects, skills and journey into backend and
+                        AI engineering.
+                    </p>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag blue">JavaScript</span>
+                    </div>
+
+                </article>
+
+                <article class="project-card">
+
+                    <div class="project-image">
+                        <img
+                            src="assets/project/Screenshot_27-9-2026_184642_gameversegg.netlify.app.jpeg"
+                            alt="GameVerse website screenshot"
+                            loading="lazy">
+                    </div>
+
+                    <div class="project-top">
+                        <h3>GameVerse</h3>
+
+                        <div class="project-links">
+                            <a
+                                href="https://github.com/Collins-911/GameVerse.git"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="GameVerse GitHub">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+
+                            <a
+                                href="https://gameversegg.netlify.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="GameVerse live site">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <p class="project-desc">
+                        A gaming-focused web experience designed with
+                        a modern interface and responsive layout.
+                    </p>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag blue">JavaScript</span>
+                    </div>
+
+                </article>
+
+                <article class="project-card">
+
+                    <div class="project-image">
+                        <img
+                            src="assets/project/Screenshot_27-9-2026_184622_techbridge-0fhz.onrender.com.jpeg"
+                            alt="TechBridge website screenshot"
+                            loading="lazy">
+                    </div>
+
+                    <div class="project-top">
+                        <h3>TechBridge</h3>
+
+                        <div class="project-links">
+                            <a
+                                href="https://github.com/Collins-911/TechBridge.git"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="TechBridge GitHub">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+
+                            <a
+                                href="https://techbridge-0fhz.onrender.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="TechBridge live site">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <p class="project-desc">
+                        A technology platform built to provide a clean
+                        and accessible web experience.
+                    </p>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag blue">JavaScript</span>
+                    </div>
+
+                </article>
+
+                <article class="project-card">
+
+                    <div class="project-image">
+                        <img
+                            src="assets/project/Screenshot_27-9-2026_18493_github.com.jpeg"
+                            alt="Personal Expense Tracker screenshot"
+                            loading="lazy">
+                    </div>
+
+                    <div class="project-top">
+                        <h3>Personal Expense Tracker</h3>
+
+                        <div class="project-links">
+                            <a
+                                href="https://github.com/Collins-911/personal-expense-tracker.git"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Expense Tracker GitHub">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <p class="project-desc">
+                        A Flask-based web app for tracking, managing and
+                        analyzing personal expenses with JSON storage,
+                        validation, statistics and interactive charts.
+                    </p>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag blue">Flask</span>
+                        <span class="tech-tag">Jinja2</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag blue">Chart.js</span>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <section id="contact" class="section">
+
+            <div class="sec-header">
+                <div class="sec-label">03 / contact</div>
+                <h2 class="sec-title">Let's Connect</h2>
+            </div>
+
+            <div class="contact-grid">
+
+                <div class="contact-info">
+
+                    <div class="contact-card">
+                        <div class="contact-card-label">Email</div>
+                        <div class="contact-card-value">
+                            emelumbacollins@gmail.com
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-label">Location</div>
+                        <div class="contact-card-value">
+                            Nigeria
+                        </div>
+                    </div>
+
+                    <p class="contact-note">
+                        I'm open to opportunities, collaborations and
+                        interesting projects.
+                    </p>
+
+                </div>
+
+                <form class="contact-form" id="contactForm">
+
+                    <div class="form-row">
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Your name"
+                            required>
+
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Your email"
+                            required>
+                    </div>
+
+                    <input
+                        type="text"
+                        name="subject"
+                        placeholder="Subject"
+                        required>
+
+                    <textarea
+                        name="message"
+                        placeholder="Your message"
+                        required></textarea>
+
+                    <button type="submit" class="submit-btn">
+                        Send Message
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-check"></i>
+        <span id="toastMsg">Message sent successfully.</span>
     </div>
-    <div class="sidebar-name">Collins</div>
-    <div class="sidebar-role">// dev & builder</div>
 
-    <nav>
-      <a class="nav-link active" data-section="home" href="#home"><i class="fas fa-terminal"></i> Home</a>
-      <a class="nav-link" data-section="about" href="#about"><i class="fas fa-user"></i> About</a>
-      <a class="nav-link" data-section="projects" href="#projects"><i class="fas fa-code"></i> Projects</a>
-      <a class="nav-link" data-section="contact" href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="script.js"></script>
 
-    <div class="sidebar-bottom">
-      <div class="socials">
-        <a href="https://github.com/Collins-911" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/collins-emelumba-85031637a" target="_blank"><i
-            class="fab fa-linkedin"></i></a>
-        <a href="https://discord.com/users/ps38_60" target="_blank"><i class="fab fa-discord"></i></a>
-      </div>
-      <button class="theme-btn" id="themeBtn"><i class="fas fa-sun"></i></button>
-    </div>
-  </aside>
-
-  <main class="main">
-
-    <!-- HOME -->
-    <section class="section active" id="home">
-      <div class="home-eyebrow">available for work</div>
-      <h1 class="home-title">Hi, I'm<br><span>Collins.</span></h1>
-      <p class="home-desc">
-        Frontend developer currently going deep on <strong style="color:var(--text)">Python</strong> — building toward
-        backend, ML and AI engineering. I build clean, functional web experiences and I'm focused on growing into a
-        full-stack developer with an AI specialization.
-      </p>
-      <div class="tag-row">
-        <span class="tag green">Python</span>
-        <span class="tag green">Frontend Dev</span>
-        <span class="tag blue">ML / AI (learning)</span>
-        <span class="tag blue">React</span>
-        <span class="tag">HTML / CSS / JS</span>
-        <span class="tag">Flask (soon)</span>
-      </div>
-      <div class="home-btns">
-        <button class="btn btn-solid nav-link" data-section="projects"><i class="fas fa-folder-open"></i> View
-          Projects</button>
-        <button class="btn btn-outline nav-link" data-section="contact"><i class="fas fa-paper-plane"></i> Contact
-          Me</button>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="sec-header">
-        <div class="sec-label">// about</div>
-        <h2 class="sec-title">Who I Am</h2>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-text">
-          <p>I'm <strong>Collins Emelumba</strong>, a frontend developer based in Nigeria. I've been building web
-            interfaces with HTML, CSS, JavaScript and React.</p>
-          <p>Right now I'm going deep into <strong>Python</strong> — learning it properly to move into backend
-            development, then eventually <strong>machine learning and AI engineering</strong>. I'm not rushing it, I'm
-            building real foundations.</p>
-          <p>I learn by building. Every concept I study, I turn into code I can show.</p>
-          <div class="stats-row">
-            <div class="stat"><span class="stat-num">1+</span><span class="stat-label">Yrs Exp</span></div>
-            <div class="stat"><span class="stat-num">4+</span><span class="stat-label">Projects</span></div>
-            <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Focused</span></div>
-          </div>
-        </div>
-
-        <div class="skills-list">
-          <div class="skill-row" data-skill="html-css">
-            <span class="skill-name"><span>HTML / CSS</span><span class="skill-percent">90%</span></span>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:90%"></div>
-            </div>
-          </div>
-          <div class="skill-row" data-skill="javascript">
-            <span class="skill-name"><span>JavaScript</span><span class="skill-percent">45%</span></span>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:45%"></div>
-            </div>
-          </div>
-          <div class="skill-row" data-skill="react">
-            <span class="skill-name"><span>React</span><span class="skill-percent">60%</span></span>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:60%"></div>
-            </div>
-          </div>
-          <div class="skill-row" data-skill="python">
-            <span class="skill-name"><span>Python</span><span class="skill-percent">30%</span></span>
-            <div class="skill-bar">
-              <div class="skill-fill blue" style="width:30%"></div>
-            </div>
-          </div>
-          <div class="skill-row" data-skill="machine-learning">
-            <span class="skill-name"><span>ML / AI</span><span class="skill-percent">0%</span></span>
-            <div class="skill-bar">
-              <div class="skill-fill blue" style="width:0%"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-          <h3>Frontend Dev</h3>
-          <p>Responsive, modern UIs with HTML, CSS, JavaScript and React.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon"><i class="fab fa-python"></i></div>
-          <h3>Python & Backend</h3>
-          <p>Currently learning Python deeply — heading toward Flask and backend APIs.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-brain"></i></div>
-          <h3>ML / AI (Goal)</h3>
-          <p>Building toward machine learning and AI engineering as my long-term path.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
-      <div class="sec-header">
-        <div class="sec-label">// projects</div>
-        <h2 class="sec-title">Things I've Built</h2>
-      </div>
-
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-top">
-            <h3>Portfolio Website</h3>
-            <div class="project-links">
-              <a href="https://github.com/Collins-911/Portfolio.git" target="_blank"><i class="fab fa-github"></i></a>
-              <a href="https://portfoliocollins.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-            </div>
-          </div>
-          <p class="project-desc">Personal portfolio site showcasing my work, skills and journey as a developer.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">HTML</span>
-            <span class="tech-tag">CSS</span>
-            <span class="tech-tag">JavaScript</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-top">
-            <h3>GameVerse</h3>
-            <div class="project-links">
-              <a href="https://github.com/Collins-911/GameVerse.git" target="_blank"><i class="fab fa-github"></i></a>
-              <a href="https://gameversegg.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-            </div>
-          </div>
-          <p class="project-desc">A game discovery app built with React, pulling data from a public games API.</p>
-          <div class="tech-tags">
-            <span class="tech-tag blue">React</span>
-            <span class="tech-tag blue">API</span>
-            <span class="tech-tag">JavaScript</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-top">
-            <h3>TechBridge</h3>
-            <div class="project-links">
-              <a href="https://github.com/Collins-911/TechBridge.git" target="_blank"><i class="fab fa-github"></i></a>
-              <a href="https://techbridge-0fhz.onrender.com" target="_blank"><i
-                  class="fas fa-external-link-alt"></i></a>
-            </div>
-          </div>
-          <p class="project-desc">A React-based platform connecting tech learners with resources and community.</p>
-          <div class="tech-tags">
-            <span class="tech-tag blue">React</span>
-            <span class="tech-tag blue">Node.js</span>
-            <span class="tech-tag blue">SQLite</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">CSS</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="sec-header">
-        <div class="sec-label">// contact</div>
-        <h2 class="sec-title">Get In Touch</h2>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-card">
-            <div class="contact-card-label">Email</div>
-            <div class="contact-card-value">emelumbacollins@gmail.com</div>
-          </div>
-          <div class="contact-card">
-            <div class="contact-card-label">Location</div>
-            <div class="contact-card-value">Nigeria 🇳🇬</div>
-          </div>
-          <div class="contact-card">
-            <div class="contact-card-label">Status</div>
-            <div class="contact-card-value" style="color:var(--accent)">Open to opportunities</div>
-          </div>
-          <p class="contact-note">Whether it's a project, collab, or just want to talk tech — feel free to reach out. I
-            reply within 24hrs.</p>
-        </div>
-
-        <form class="contact-form" id="contactForm">
-          <div class="form-row">
-            <input type="text" name="from_name" placeholder="Your name" required />
-            <input type="email" name="from_email" placeholder="Your email" required />
-          </div>
-          <textarea name="message" placeholder="Your message..." required></textarea>
-          <button type="submit" class="submit-btn">
-            <i class="fas fa-paper-plane"></i> Send Message
-          </button>
-        </form>
-      </div>
-    </section>
-
-  </main>
-
-  <div class="toast" id="toast">
-    <i class="fas fa-check-circle"></i>
-    <span id="toastMsg">Message sent!</span>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script src="script.js"></script>
 </body>
-
 </html>
+

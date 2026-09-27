@@ -14,15 +14,28 @@ themeBtn.addEventListener('click', function () {
 
 // ── NAVIGATION ──
 function showSection(id) {
-  document.querySelectorAll('.section').forEach(function (s) { s.classList.remove('active'); });
-  document.querySelectorAll('.nav-link').forEach(function (l) { l.classList.remove('active'); });
-  var sec = document.getElementById(id);
-  if (sec) sec.classList.add('active');
-  document.querySelectorAll('[data-section="' + id + '"]').forEach(function (l) { l.classList.add('active'); });
-  document.getElementById('sidebar').classList.remove('open');
-  window.location.hash = id; // NEW: persist current section in the URL
-}
+  document.querySelectorAll('.section').forEach(function (s) {
+    s.classList.remove('active');
+  });
 
+  document.querySelectorAll('.nav-link').forEach(function (l) {
+    l.classList.remove('active');
+  });
+
+  var sec = document.getElementById(id);
+
+  if (sec) {
+    sec.classList.add('active');
+  }
+
+  document.querySelectorAll('[data-section="' + id + '"]').forEach(function (l) {
+    l.classList.add('active');
+  });
+
+  document.getElementById('sidebar').classList.remove('open');
+
+  history.replaceState(null, '', '#' + id);
+}
 document.querySelectorAll('.nav-link').forEach(function (link) {
   link.addEventListener('click', function (e) {
     e.preventDefault();
@@ -109,7 +122,7 @@ form.addEventListener('submit', function (e) {
     return;
   }
 
-  emailjs.send("service_vm3xitm", "template_a58fy07", data)
+  emailjs.send("service_jznnjc6", "template_a58fy07", data)
     .then(function () {
       form.reset();
       btn.innerHTML = original;
